@@ -1,0 +1,45 @@
+/* body {
+    background-color: #f8f9fa;
+  } */
+
+  .container {
+    max-width: 700px;
+    margin: 50px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #ffffff;
+  }
+
+  h2,h3 {
+    text-align: center;
+    color: #333333;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    font-weight: bold;
+    color: #333333;
+  }
+
+  input.form-control {
+    border-radius: 3px;
+  }
+
+  button.btn-primary {
+    width: 100%;
+  }
+
+  #id_email,#id_new_password1,#id_new_password2{
+    margin: 5px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+  }

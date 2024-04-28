@@ -1,0 +1,12 @@
+{% extends "media_main.html" %}
+
+{% block content %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <p>Are your sure to delete the <b> {{post.name}}</b> ??</p>
+    <a href="{% url 'posts' %}">Go Back</a>
+    <input type="submit" value="confirm">
+</form>
+
+{% endblock%}

@@ -1,0 +1,77 @@
+{% include 'navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All users profile</title>
+    <link rel="stylesheet" href="{% static 'css/profiles.css' %}">
+</head>
+<body>
+    <!-- Search bar -->
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="card search-card">
+              <div class="card-body search-container">
+                <form id="searchForm" class="d-flex" method="GET" action="{% url 'profiles' %}" >
+                  <input class="form-control me-2"  type="text" value="{{search_value}}" placeholder="Search" name="search_value" aria-label="Search">
+                  <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Cards -->
+    <p style="text-align: center;" >Number of Search Result {{ count }}</p>
+
+    <!-- profiles -->
+    <div class="container" style="padding-top: 50px; padding-left: 0%;">
+        <div class="row">
+            {% for profile in profiles %}
+            <div class="col-md-3">
+                    <a href="{% url 'profile' profile.id %}">
+                        <div class="card">
+                            <img src="{{ profile.profile_image.url }}" class="card-img-top" alt="Card Image">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ profile.name }}</h5>
+                                <p class="card-text">{{ profile.bio |slice:":50"}}</p>
+                            </div>
+                        </div>
+                    </a>
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <table>
+        <th>Name</th>
+        <th>Bio</th>
+        <th>Skills</th>
+        <th>image</th>
+        <th>View profile </th>
+        {% for profile in profiles%}
+        <tr>
+            <td>{{ profile.name }}</td>
+            <td>{{ profile.bio }}</td>
+            <td>
+                
+                {% for skill in profile.skill_set.all %}
+                    <ul>{{ skill }}</ul>
+                {% endfor %}
+                
+            </td>
+            <td><img style="width: 50px;" src="{{ profile.profile_image.url }}" alt=""></td>
+            <td><a href="{% url 'profile' profile.id %}"><button>View Profile </button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    {% include 'pagination.html' with query_set=profiles custom_range=custom_range %}
+
+</body>
+</html>

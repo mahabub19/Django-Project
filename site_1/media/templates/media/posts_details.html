@@ -1,0 +1,80 @@
+{% include 'navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{record.title}}</title>
+</head>
+
+<body >
+
+    <div class="container" style="text-align: center;">
+
+        <h1>{{record.title}} by {{profile.name}}</h1>
+
+    <img style=" width: 300px;" src="{{ record.feature_image.url }}">
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>descrption</th>
+            <th>reference link </th>
+        </tr>
+        <tr>
+            <td><b>{{record.id}}</b></td>
+            <td>{{record.title}}</td>
+            <td>{{record.description}}</td>
+            <td><a href="{{record.reference_link}}">Live Demo </a></td>
+
+        </tr>
+
+    </table>
+
+    <!-- Type of this post -->
+
+    <h1>Type for this post: </h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+        </tr>
+
+        {% for x in type %}
+        <tr>
+            <td>{{x.name}}</td>
+            <td>{{x.created}}</td>
+        </tr>
+        {%endfor%}
+
+    </table>
+
+    <!-- feedback datails -->
+    <h1>Feedback for this post: </h1>
+    <table>
+        <tr>
+            <th>Feedback</th>
+            <th>Reaction</th>
+            <th>Date</th>
+            <th>User </th>
+        </tr>
+
+        {% for x in reviews %}
+        <tr>
+            <td>{{x.feedback}}</td>
+            <td>{{x.value}}</td>
+            <td>{{x.created}}</td>
+            <td>{{x.user.profile.name}}</td>
+        </tr>
+        {%endfor%}
+
+    </table>
+
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% include 'navbar.html' %}
+
+
+<div class="container" style="text-align: center;">
+    <a href="{% url 'edit-account' %}"><button>Edit Account</button></a>
+    <h1>Name : {{profile.name}}</h1>
+    <h1>Email : {{profile.email}}</h1>
+    <h1>Short Bio : {{profile.bio}}</h1>
+    <h1><u>Profile Picture </u></h1>
+    <img src="{{profile.profile_image.url}}" >
+
+    <hr>
+    <!-- skill of user section -->
+    <h1><u>Skill of {{ profile.name }}</u></h1>
+    {% for x in skill %}
+        <li>{{ x }} </li>
+    {% endfor %}
+
+    <hr>
+    <!-- post of user section -->
+    <h1><u>Posts of {{ profile.name }}</u></h1>
+    {% for x in posts %}
+    <li><a href="{% url 'post' x.id %}">{{ x.title }}</a> </li>
+    {% endfor %}
+
+    <hr>
+
+</div>
+
+

@@ -1,0 +1,50 @@
+{% load static %}
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create post</title>
+  <!-- Add Bootstrap CSS link -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/form.css' %}">
+</head>
+<body>
+
+  <!-- <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <input type="submit">
+  </form>  -->
+
+
+  <div class="container">
+    <h2 class="mb-4">Post form</h2>
+
+    <form class="form" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      {% for feild in form %}
+      <div class="form-group">
+        <label for="fullName">{{ feild.label}}</label>
+        {{feild}}
+      </div>
+      {% endfor %}
+      <!-- <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password" required>
+      </div> -->
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <!-- Add Bootstrap JS and Popper.js scripts (required for some Bootstrap features) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% include 'navbar.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profile.name }}</title>
+</head>
+<body>
+    <div >
+
+        <img src="{{profile.profile_image.url}}" alt="">
+    
+        <h1>{{ profile.name }}</h1>
+        {% for x in profile.skill_set.all %}
+            <h1>{{x}}</h1>
+        {%endfor%}
+        <h1>{{ profile.bio }}</h1>
+    
+    </div>
+</body>
+</html>
